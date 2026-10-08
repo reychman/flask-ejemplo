@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }} - Flask Ejemplo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <h1>Flask Ejemplo</h1>
+            <div class="nav-links"><a href="{{ url_for('inicio') }}">Inicio</a>
+                <a href="{{ url_for('estudiantes') }}">Estudiantes</a>
+                <a href="{{ url_for('contacto') }}">Contacto</a>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        <section class="contacto">
+            <h2>Contacto</h2>
+            <p>Si necesitas comunicarte con nosotros, completa el siguiente formulario.</p>
+            <form id="form-contacto">
+                <label for="nombre">Nombre</label>
+                <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    required
+                >
+                <label for="email">
+                    Correo electrónico
+                </label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                >
+                <label for="mensaje">
+                    Mensaje
+                </label>
+                <textarea
+                    id="mensaje"
+                    name="mensaje"
+                    rows="5"
+                    required
+                ></textarea>
+                <button class="btn" type="submit">
+                    Enviar mensaje
+                </button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>Actividad 3 - Flask</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
