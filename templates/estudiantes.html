@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<section>
+    <h2>Lista de estudiantes</h2>
+
+    {% if estudiantes %}
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Carrera</th>
+                <th>Semestre</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for e in estudiantes %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ e.nombre }}</td>
+                <td>{{ e.carrera }}</td>
+                <td>{{ e.semestre }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No hay estudiantes registrados.</p>
+    {% endif %}
+</section>
+{% endblock %}
