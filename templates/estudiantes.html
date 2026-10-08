@@ -1,32 +1,39 @@
-{% extends "base.html" %}
-
-{% block contenido %}
-<section>
-    <h2>Lista de estudiantes</h2>
-
-    {% if estudiantes %}
-    <table>
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nombre</th>
-                <th>Carrera</th>
-                <th>Semestre</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for e in estudiantes %}
-            <tr>
-                <td>{{ loop.index }}</td>
-                <td>{{ e.nombre }}</td>
-                <td>{{ e.carrera }}</td>
-                <td>{{ e.semestre }}</td>
-            </tr>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }} - Flask Ejemplo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <h1>Flask Ejemplo</h1>
+            <div class="nav-links">
+                <a href="{{ url_for('inicio') }}">Inicio</a>
+                <a href="{{ url_for('estudiantes') }}">Estudiantes</a>
+                <a href="{{ url_for('contacto') }}">Contacto</a>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        <h2>Lista de estudiantes</h2>
+        <div class="cards">
+            {% for estudiante in estudiantes %}
+            <article class="card">
+                <h3>{{ estudiante.nombre }}</h3>
+                <p><strong>Carrera:</strong>{{ estudiante.carrera }}</p>
+                <p><strong>Semestre:</strong>{{ estudiante.semestre }}</p>
+            </article>
+            {% else %}
+            <p>No hay estudiantes registrados.</p>
             {% endfor %}
-        </tbody>
-    </table>
-    {% else %}
-    <p>No hay estudiantes registrados.</p>
-    {% endif %}
-</section>
-{% endblock %}
+        </div>
+    </main>
+    <footer>
+        <p>Actividad 3 - Flask</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
